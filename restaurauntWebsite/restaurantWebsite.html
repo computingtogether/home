@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Eat Boards</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+
+<body>
+
+  <!--Navigation bar-->
+  <div id="nav-placeholder"> </div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("/nav.html");
+    });
+  </script>
+  <!--end of Navigation bar-->
+
+  <div id="restaurantName">Eat Boards</div>
+
+  <div id="navBar">
+    <table id="navTable">
+      <tr>
+        <td>
+          <div id="home" class="dropDownRoot" onclick="changeContents('homeContainer')">home</div>
+        </td>
+        <td>
+          <div class="dropdown">
+            <div id="menuRoot">menus</div>
+            <div class="dropdown-content">
+              <div id="breakfast" onclick="changeContents('breakfastContainer')">breakfast</div>
+              <div id="lunch" onclick="changeContents('lunchContainer')">lunch</div>
+              <div id="dinner" onclick="changeContents('dinnerContainer')">dinner</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div id="aboutUs" class="dropDownRoot" onclick="changeContents('aboutUsContainer')"> about us </div>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+
+  <div id="homeContainer">
+    <img class="t" src="images/frontPageBoard.jpg" width=100%>
+
+
+
+  </div>
+
+  <div id="breakfastContainer" style="display: none;">
+    <br>
+    <div class="greyHeader"> breakfast boards </div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%> Captain Plantain</td>
+        <td class="dishDescription" width=45%>3 scrambled Copia eggs cooked in organic extra virgin
+          olive oil and a plantain fried in extra virgin coconut oil, drizzeled with a secret cilantro garlic sauce.
+        </td>
+        <td width=5%>$15</td>
+        <td class="dishImage" width=30%><img src="images/breakfast/captainPlantain.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Bacon Mountain</td>
+        <td class="dishDescription" width=45%>4 medium boiled Copia eggs, thick center cut paleo bacon,
+          plaintains fried in extra virgin coconut oil, Branstool peaches, seasonal fruit and local microgreens. </td>
+        <td width=5%>$24</td>
+        <td class="dishImage" width=30%><img src="images/breakfast/baconMountain.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Nice To Meat You</td>
+        <td class="dishDescription" width=45%>4 scrambled Copia eggs cooked in organic extra virgin
+          olive oil and a plantain fried in extra virgin coconut oil, thick center cut paleo bacon,
+          breakfast sausage and seasonal fruit. </td>
+        <td width=5%>$26</td>
+        <td class="dishImage" width=30%> <img src="images/breakfast/niceToMeatYou.jpg" width=100%></td>
+      </tr>
+    </table>
+
+    <div class="greyHeader">breakfast plates</div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%> Back To The Basics</td>
+        <td class="dishDescription" width=45%>3 scrambled Copia eggs cooked in organic extra virgin olive oil
+          and a plantain fried in extra virgin coconut oil, seasoned with maldon salt and fresh cracked pepper.</td>
+        <td width=5%>$12</td>
+        <td class="dishImage" width=30%><img src="images/breakfast/backToTheBasics.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%> Fresh Air</td>
+        <td class="dishDescription" width=45%>3 scrambled Copia eggs cooked in organic extra
+          virgin olive oil and a plantain
+          fried in extra virgin coconut oil, avocados and fresh seasonal fruit.</td>
+        <td width=5%>$14</td>
+        <td class="dishImage" width=30%><img src="images/breakfast/freshAir.jpg" width=100%></td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <div id="lunchContainer" style="display: none;">
+    <br>
+    <div class="greyHeader"> lunch boards </div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%> Brunch Line Up</td>
+        <td class="dishDescription" width=45%>Toested Coissants, bacon, fried eggs and seasonal fruit.</td>
+        <td width=5%>$20</td>
+        <td class="dishImage" width=30%><img src="images/lunch/brunchLineUp.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Cheese Board</td>
+        <td class="dishDescription" width=45%>An assortment of hard cheeses and seasonal fruit. </td>
+        <td width=5%>$13</td>
+        <td class="dishImage" width=30%><img src="images/lunch/cheeseBoard.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Veggie Paleo Rolls</td>
+        <td class="dishDescription" width=45%>"Roll your own" grain-free vegatarian sushi rolls. </td>
+        <td width=5%>$8</td>
+        <td class="dishImage" width=30%> <img src="images/lunch/veggiePaleoRolls.jpg" width=100%></td>
+      </tr>
+    </table>
+
+    <div class="greyHeader">lunch plates</div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%> Meat and Potatoes and Salad</td>
+        <td class="dishDescription" width=45%>2 beef meat balls, pan crisped Japanese sweet potatoes,
+          green leaf lettuce and seasonal fruit.</td>
+        <td width=5%>$15</td>
+        <td class="dishImage" width=30%><img src="images/lunch/meatAndPotatoesAndSalad.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%> Steak and Salad</td>
+        <td class="dishDescription" width=45%> Flank steak, asparagus, half an avocado and green leaf letuce.</td>
+        <td width=5%>$16</td>
+        <td class="dishImage" width=30%><img src="images/lunch/steakAndSalad.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%> Steak and Plantains</td>
+        <td class="dishDescription" width=45%> Grilled long cut plantains, sirloin steak and broccoli.</td>
+        <td width=5%>$16</td>
+        <td class="dishImage" width=30%><img src="images/lunch/steakAndPlantains.jpg" width=100%></td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <div id="dinnerContainer" style="display: none;">
+    <br>
+    <div class="greyHeader"> dinner boards </div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%> Spaghetti Squash Boats</td>
+        <td class="dishDescription" width=45%>Home made pomadoro sauce with spaghetti squash and meat balls.</td>
+        <td width=5%>$20</td>
+        <td class="dishImage" width=30%><img src="images/dinner/spaghettiSquashBoats.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Salmon and Potatoes</td>
+        <td class="dishDescription" width=45%>Whole slab of salmon with fresh dill and lemon,
+          mix of roasted potatoes and sauted asparagus.</td>
+        <td width=5%>$27</td>
+        <td class="dishImage" width=30%><img src="images/dinner/salmonAndPotatoes.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Burger and Roasties</td>
+        <td class="dishDescription" width=45%> Seasoned lean hamburger, sauted shishito peppers,
+          roasted garlic, onions and Japanese sweet potatoes. </td>
+        <td width=5%>$19</td>
+        <td class="dishImage" width=30%><img src="images/dinner/burgerAndRoasties.jpg" width=100%></td>
+      </tr>
+
+      <tr>
+        <td class="dishName" width=20%>Meatballs and Pesto Zoodles</td>
+        <td class="dishDescription" width=45%> Seasoned meat balls with spiralized zuccini and local fresh
+          basil pesto, sauted asparagus and seasonal salad.</td>
+        <td width=5%>$22</td>
+        <td class="dishImage" width=30%><img src="images/dinner/meatballsAndPestoZoodles.jpg" width=100%></td>
+      </tr>
+    </table>
+
+    <br>
+    <div class="greyHeader"> desert boards </div>
+
+    <table class="menuTable">
+      <tr>
+        <td class="dishName" width=20%>Berries and Whipped Cream</td>
+        <td class="dishDescription" width=45%> Blueberries, strawberries, raspberries and organic Snowville
+          whipped cream</td>
+        <td width=5%>$10</td>
+        <td class="dishImage" width=30%><img src="images/dinner/berriesAndWhippedCream.jpg" width=100%></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div id="aboutUsContainer" style="display: none;">
+    <br>
+    <div class="greyHeader">Who Are We?</div>
+
+    <table>
+      <tr>
+        <td width=50%>
+          <p id="chefsDescription">We are comprised of 2 owener/chefs with different culinary backgrounds.
+            One chef grew up with exposure to Venezuelan food and had the early duty of preparing salads for their
+            family.
+            This experience sparked a passion for fresh and dynamic food.
+            This chef is interested in how chop size and quality of both fresh foods and cooked foods can add to the
+            aethetics,
+            texture, and taste for an eating experience.
+            <br>
+            <br>
+            The other chef grew up in the Nashville and brings southern and french cooking elements to their work.
+            Their expertise with herbs and flavor pairings is apparent in every dish they create.
+            This talented chef is also a mixologist who experiments with creating balanced Mocktails to pair with
+            dishes.
+          </p>
+        </td>
+
+        <td width=40%>
+          <img src="images/chefsPhoto.jpg" width=100%>
+        </td>
+      </tr>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
