@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/home/home.css">
+  <link rel="stylesheet" href="/home/navbar.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+
+  <script src="scripts/fractalTree.js"></script>
+
+  <style>
+    #p5Container {
+      margin: auto;
+      width: 450px;
+      position: relative;
+    }
+    #sliderContainer {
+      margin: auto;
+      width: 200px;
+      position: relative;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navigation bar-->
+  <div id="nav-placeholder"> </div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("/home/nav.html");
+    });
+  </script>
+  <!--end of Navigation bar -->
+
+  <h1 style="text-align: center ;">Fractal Tree</h1>
+
+  <div id="p5Container"></div>
+  <div id="sliderContainer"></div>
+</body>
+
+</html>
