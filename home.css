@@ -3,3 +3,11 @@ body {
   font-family: Roboto;
   color: rgb(200, 200, 200);
 }
+
+#foundWords{
+
+  display: block;
+  position: absolute;
+  top:100;
+  left:2%;
+}
