@@ -1,11 +1,18 @@
 var tough2 = choseTough();
+// index 0 (0,1)       index 1 (0,2) 
 var easy7 = choseEasy();
+// index 0 (1,1)       index 1 (1,2)      index 2 (2,2)   
+// index 3 (2,1)       index 4 (0,0)      index 5 (1,0)   
+// index 6 (2,0)  
+
 var resetButton;
 var words;
 var possibles = [];
 var totalPossible;
 var input;
 var numToGuess;
+var points;
+
 
 function preload() {
   words = loadTable("/home/p5js/scripts/dictionary.csv", 'csv');
@@ -20,47 +27,81 @@ function setup() {
   can.parent('p5Container');
   input.parent('p5Container');
   resetButton.position(20, 20);
-  input.position(125, 400);
+  input.position(72, 400);
   resetButton.parent('p5Container');
+  points = 0;
 
   reset();
 
 
-    console.log(possibles);
+  console.log(possibles);
 }
 
 function draw() {
-  background(200);
+  background(240);
   textSize(32);
 
-  text(tough2[0], 120, 120);
-  text(tough2[1], 300, 120);
+  fill(outerColor(4));
+  rect(83, 90, 90, 90, 20, 0, 0, 0); //  (0,0)
+  fill(outerColor(5));
+  rect(83, 180, 90, 90, 0, 0, 0, 0); // (1,0)
+  fill(outerColor(6));
+  rect(83, 270, 90, 90, 0, 0, 0, 20); // (2,0)
 
-  text(easy7[6], 120, 300);
-  text(easy7[5], 300, 300);
-  text(easy7[4], 210, 120);
-  text(easy7[3], 210, 300);
-  text(easy7[2], 120, 210);
-  text(easy7[1], 300, 210);
+  fill(toughColor(0));
+  rect(173, 90, 90, 90, 0, 0, 0, 0); //  (0,1)
+  fill(innerColor());
+  rect(173, 180, 90, 90, 0, 0, 0, 0); //  (1,1)
+  fill(outerColor(3));
+  rect(173, 270, 90, 90, 0, 0, 0, 0); // (2,1)
+
+  fill(toughColor(1));
+  rect(263, 90, 90, 90, 0, 20, 0, 0); // (0,2)
+  fill(outerColor(1));
+  rect(263, 180, 90, 90, 0, 0, 0, 0); // (1,2)
+  fill(outerColor(2));
+  rect(263, 270, 90, 90, 0, 0, 20, 0); // (2,2)
+
+  fill(0, 0, 0);
+  text(tough2[0], 210, 150);
+  text(tough2[1], 300, 150);
+
+  text(easy7[6], 120, 330);   //vowel
+  text(easy7[5], 120, 240);    //vowel
+  text(easy7[4], 120, 150);     //vowel
+
+  text(easy7[3], 210, 330);
+  text(easy7[2], 300, 330);
+  text(easy7[1], 300, 240);
 
 
   fill(255, 0, 0);
-  text(easy7[0], 210, 210);       //center letter
+  text(easy7[0], 210, 240);       //center letter
   fill(0, 0, 0);
 
   textSize(16);
+
+  fill(200, 100, 0);
+  text(points + "  points ", 350, 417);
+
+  fill(0);
   text(totalPossible + " possible words", 160, 35);
   text(numToGuess + "  left to guess ", 160, 65);
-  text("guess: ", 72, 417);
+  text("guess: ", 20, 417);
 
   resetButton.mousePressed(reset);
 
-  if(keyIsDown(13)){
-    checkGuess();
+  if (keyIsDown(13)) {
+    if (!checkGuess())
+      input.value('');
+
   }
 
-  if(numToGuess==0)
-  reset();
+  if (numToGuess == 0)
+    reset();
+
+  var element = document.getElementById("foundWords");
+  element.scrollTop = element.scrollHeight;
 }
 
 function choseTough() {
@@ -105,7 +146,7 @@ function findPossibleWords() {
 
   for (var i = 0; i < words.getRowCount(); i++) {
     const w = words.getString(i, 0);
-    
+
     var goOn = true;
 
     for (var r = 0; r < w.length; r++) {
@@ -143,7 +184,7 @@ function reset() {
     numToGuess = 10;
   if (numToGuess == 0)
     numToGuess = 1;
-    document.getElementById('foundWords').innerHTML = '';
+  // document.getElementById('foundWords').innerHTML = '';
 
 }
 
@@ -154,11 +195,37 @@ function checkGuess() {
     if (possibles[y] == input.value()) {
       document.getElementById('foundWords').innerHTML += possibles[y] + "<br />";
       numToGuess--;
-      possibles.splice(y,1);
-      totalPossible --;
+      points += input.value().length;
+      possibles.splice(y, 1);
       input.value('');
+      return true;
     }
   }
+  return false;
+}
 
 
+
+function outerColor(y) {
+  for (var b = 0; b < input.value().length; b++) {
+    if (input.value().charAt(b) == easy7[y])
+      return color(120, 120, 255);;
+  }
+  return color(200, 200, 240);
+}
+
+function toughColor(y) {
+  for (var b = 0; b < input.value().length; b++) {
+    if (input.value().charAt(b) == tough2[y])
+      return color(120, 120, 255);;
+  }
+  return color(200, 200, 240);
+}
+
+function innerColor() {
+  for (var b = 0; b < input.value().length; b++) {
+    if (input.value().charAt(b) == easy7[0])
+      return color(255, 150, 150);;
+  }
+  return color(240, 200, 200);
 }
