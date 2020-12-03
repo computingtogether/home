@@ -29,9 +29,9 @@ function setup() {
   input.position(72, 400);
   resetButton.parent('p5Container');
   points = 0;
-
+  input.elt.focus();
+  
   reset();
-
 
   console.log(possibles);
 }

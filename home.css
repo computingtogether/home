@@ -27,3 +27,7 @@ body {
 .resourceTable td, th, tr{
   padding: 20px;
 }
+
+/* #detector{
+  display: none; 
+} */
